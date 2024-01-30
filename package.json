@@ -43,7 +43,7 @@
     "ts-jest": "^29.0.3",
     "typescript": "^5.2.2",
     "yaml": "^2.2.2",
-    "zod": "github:enode/zod#5134a80e6939bc2eefa2dcedb5e5bb21061c8893"
+    "zod": "github:enode/zod#bee32688b9bd50f6895ce88b1a63c5b0f4e9d4be"
   },
   "author": "Astea Solutions <info@asteasolutions.com>",
   "license": "MIT"
