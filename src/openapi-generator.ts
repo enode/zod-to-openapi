@@ -720,6 +720,15 @@ export class OpenAPIGenerator {
       const refId = this.getRefId(obj) as string; // type-checked earlier
       const value = obj.shape?.[discriminator];
 
+      if (isZodType(obj, 'ZodDiscriminatedUnion')) {
+        const childValues = obj._enforceParentDiscriminator(discriminator);
+        if (childValues.length !== 1) {
+          throw new Error(`Evaluating ${discriminator}: Only one child discriminator value supported, got ${childValues}`)
+        }
+        mapping[String(childValues[0])] = this.generateSchemaRef(refId);
+        return;
+      }
+
       if (isZodType(value, 'ZodEnum')) {
         value._def.values.forEach((enumValue: string) => {
           mapping[enumValue] = this.generateSchemaRef(refId);
